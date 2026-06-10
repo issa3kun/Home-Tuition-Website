@@ -14,7 +14,7 @@ parentRequestForm.addEventListener("submit", function (event) {
     parentName: document.getElementById("parentName").value.trim(),
     whatsappNumber: document.getElementById("whatsappNumber").value.trim(),
     studentLevel: document.getElementById("studentLevel").value,
-    subjects: document.getElementById("subjects").value.trim(),
+    subjects: document.getElementById("subjects").value,
     lessonMode: document.getElementById("lessonMode").value,
     area: document.getElementById("area").value.trim(),
     preferredGender: document.getElementById("preferredGender").value,
