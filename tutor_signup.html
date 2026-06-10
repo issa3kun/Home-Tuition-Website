@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyMatch | Tutor Sign-Up</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="page-wrapper">
+    <section class="form-card">
+      <a href="./index.html" class="back-link">← Back to Home</a>
+
+      <p class="eyebrow">StudyMatch Tutor Registration</p>
+      <h1>Register as a tutor.</h1>
+
+      <p class="hero-text">
+        Fill in your details below. Once registered, you can be considered for suitable
+        tuition opportunities shared through our Telegram channel.
+      </p>
+
+      <form id="tutorSignupForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" required placeholder="e.g. Tan Wei Ming" />
+          </div>
+
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="tel" id="phoneNumber" required placeholder="e.g. 91234567" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required placeholder="e.g. tutor@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="telegramUsername">Telegram Username</label>
+            <input type="text" id="telegramUsername" placeholder="e.g. @studyTutor" />
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender" required>
+              <option value="">Select gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" required min="16" placeholder="e.g. 21" />
+          </div>
+
+          <div class="form-group">
+            <label for="qualification">Highest Qualification</label>
+            <select id="qualification" required>
+              <option value="">Select qualification</option>
+              <option>O-Level</option>
+              <option>A-Level</option>
+              <option>Diploma</option>
+              <option>Undergraduate</option>
+              <option>Degree Holder</option>
+              <option>MOE / NIE-trained</option>
+              <option>Postgraduate</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="experience">Teaching Experience</label>
+            <select id="experience" required>
+              <option value="">Select experience</option>
+              <option>No formal experience yet</option>
+              <option>Less than 1 year</option>
+              <option>1 - 2 years</option>
+              <option>3 - 5 years</option>
+              <option>More than 5 years</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="subjects">Subjects Able to Teach</label>
+            <input type="text" id="subjects" required placeholder="e.g. Primary Math, Secondary English" />
+          </div>
+
+          <div class="form-group">
+            <label for="levels">Levels Able to Teach</label>
+            <input type="text" id="levels" required placeholder="e.g. Primary 1-6, Secondary 1-2" />
+          </div>
+
+          <div class="form-group">
+            <label for="preferredAreas">Preferred Areas</label>
+            <input type="text" id="preferredAreas" placeholder="e.g. Tampines, Bedok, Online" />
+          </div>
+
+          <div class="form-group">
+            <label for="availability">Availability</label>
+            <input type="text" id="availability" placeholder="e.g. Weekday evenings, weekends" />
+          </div>
+
+          <div class="form-group">
+            <label for="expectedRate">Expected Rate per Hour</label>
+            <input type="text" id="expectedRate" placeholder="e.g. $35/hr" />
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="shortBio">Short Tutor Bio</label>
+          <textarea id="shortBio" rows="4" placeholder="Briefly describe your teaching style or experience."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary full-button">
+          Submit Tutor Registration
+        </button>
+      </form>
+
+      <div id="tutorConfirmationBox" class="confirmation-box hidden">
+        <h2>Registration Submitted Successfully</h2>
+        <p id="tutorConfirmationText"></p>
+
+        <h3>Next Step</h3>
+        <p>
+          Please join the Telegram channel to receive potential tuition opportunities.
+        </p>
+
+        <a href="#" class="btn btn-secondary full-button">
+          Telegram Channel Link Coming Soon
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/storage.js"></script>
+  <script src="js/tutor-signup.js"></script>
+</body>
+</html>
