@@ -47,7 +47,6 @@
               <option value="">Select gender</option>
               <option>Male</option>
               <option>Female</option>
-              <option>Prefer not to say</option>
             </select>
           </div>
 
@@ -84,12 +83,127 @@
 
           <div class="form-group">
             <label for="subjects">Subjects Able to Teach</label>
-            <input type="text" id="subjects" required placeholder="e.g. Primary Math, Secondary English" />
+            <select id="subjects" required>
+              <option value="">Select subject</option>
+
+              <optgroup label="Primary School">
+                <option>Primary English</option>
+                <option>Primary Mathematics</option>
+                <option>Primary Science</option>
+                <option>Primary Chinese</option>
+                <option>Primary Malay</option>
+                <option>Primary Tamil</option>
+                <option>Primary Higher Chinese</option>
+                <option>Primary Higher Malay</option>
+                <option>Primary Higher Tamil</option>
+              </optgroup>
+
+              <optgroup label="Secondary School - Core Subjects">
+                <option>Secondary English</option>
+                <option>Secondary Mathematics</option>
+                <option>Secondary Additional Mathematics</option>
+                <option>Secondary Science</option>
+                <option>Secondary Chinese</option>
+                <option>Secondary Malay</option>
+                <option>Secondary Tamil</option>
+                <option>Secondary Higher Chinese</option>
+                <option>Secondary Higher Malay</option>
+                <option>Secondary Higher Tamil</option>
+                <option>Secondary Literature</option>
+                <option>Secondary History</option>
+                <option>Secondary Geography</option>
+                <option>Secondary Social Studies</option>
+              </optgroup>
+
+              <optgroup label="Secondary School - Sciences">
+                <option>Secondary Biology</option>
+                <option>Secondary Chemistry</option>
+                <option>Secondary Physics</option>
+                <option>Secondary Combined Science (Bio/Chem)</option>
+                <option>Secondary Combined Science (Chem/Physics)</option>
+                <option>Secondary Combined Science (Physics/Bio)</option>
+              </optgroup>
+
+              <optgroup label="Secondary School - Other Subjects">
+                <option>Principles of Accounts (POA)</option>
+                <option>Design and Technology (D&T)</option>
+                <option>Food and Consumer Education (FCE)</option>
+                <option>Art</option>
+                <option>Music</option>
+              </optgroup>
+
+              <optgroup label="Junior College / A-Level">
+                <option>JC General Paper (GP)</option>
+                <option>JC Project Work</option>
+                <option>JC H1 Mathematics</option>
+                <option>JC H2 Mathematics</option>
+                <option>JC Further Mathematics</option>
+                <option>JC H1 Biology</option>
+                <option>JC H2 Biology</option>
+                <option>JC H1 Chemistry</option>
+                <option>JC H2 Chemistry</option>
+                <option>JC H1 Physics</option>
+                <option>JC H2 Physics</option>
+                <option>JC Economics</option>
+                <option>JC Literature</option>
+                <option>JC History</option>
+                <option>JC Geography</option>
+                <option>JC China Studies in English</option>
+                <option>JC Knowledge and Inquiry</option>
+              </optgroup>
+
+              <optgroup label="Others">
+                <option>Phonics / Reading</option>
+                <option>Creative Writing</option>
+                <option>Study Skills / Exam Preparation</option>
+                <option>Others</option>
+              </optgroup>
+            </select>
           </div>
 
           <div class="form-group">
             <label for="levels">Levels Able to Teach</label>
-            <input type="text" id="levels" required placeholder="e.g. Primary 1-6, Secondary 1-2" />
+            <select id="levels" required>
+              <option value="">Select level</option>
+
+              <optgroup label="Primary School">
+                <option>Primary 1</option>
+                <option>Primary 2</option>
+                <option>Primary 3</option>
+                <option>Primary 4</option>
+                <option>Primary 5</option>
+                <option>Primary 6</option>
+                <option>Primary 1 - 3</option>
+                <option>Primary 4 - 6</option>
+                <option>Primary 1 - 6</option>
+              </optgroup>
+
+              <optgroup label="Secondary School">
+                <option>Secondary 1</option>
+                <option>Secondary 2</option>
+                <option>Secondary 3</option>
+                <option>Secondary 4</option>
+                <option>Secondary 5</option>
+                <option>Secondary 1 - 2</option>
+                <option>Secondary 3 - 5</option>
+                <option>Secondary 1 - 5</option>
+              </optgroup>
+
+              <optgroup label="Junior College">
+                <option>JC 1</option>
+                <option>JC 2</option>
+                <option>JC 1 - 2</option>
+              </optgroup>
+
+              <optgroup label="Others">
+                <option>Preschool / Kindergarten</option>
+                <option>IB Programme</option>
+                <option>ITE</option>
+                <option>Polytechnic</option>
+                <option>Adult Learning</option>
+                <option>Others</option>
+              </optgroup>
+            </select>
           </div>
 
           <div class="form-group">
@@ -98,8 +212,29 @@
           </div>
 
           <div class="form-group">
-            <label for="availability">Availability</label>
-            <input type="text" id="availability" placeholder="e.g. Weekday evenings, weekends" />
+            <label>Availability</label>
+
+            <div class="checkbox-group">
+              <label class="checkbox-option">
+                <input type="checkbox" name="availabilityPeriod" value="AM" />
+                <span>AM</span>
+              </label>
+
+              <label class="checkbox-option">
+                <input type="checkbox" name="availabilityPeriod" value="PM" />
+                <span>PM</span>
+              </label>
+            </div>
+
+            <label for="specificAvailability" class="sub-label">
+              Specific Availability <span>(Optional)</span>
+            </label>
+
+            <input
+              type="text"
+              id="specificAvailability"
+              placeholder="e.g. Saturday 10am, weekdays after 7pm"
+            />
           </div>
 
           <div class="form-group">

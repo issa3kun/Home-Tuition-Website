@@ -37,3 +37,8 @@ tutorSignupForm.addEventListener("submit", function (event) {
 
   tutorConfirmationBox.scrollIntoView({ behavior: "smooth" });
 });
+
+function generateTutorId() {
+  const randomCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+  return `SMT-${randomCode}`;
+}
