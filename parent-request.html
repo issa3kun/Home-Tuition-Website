@@ -166,25 +166,26 @@
           </div>
 
           <div class="form-group">
+  <div class="form-group">
   <label>Preferred Timing</label>
 
-  <div class="timing-toggle">
-    <label class="timing-option">
+  <div class="checkbox-group">
+    <label class="checkbox-option">
       <input type="checkbox" name="preferredTimingPeriod" value="AM" />
       <span>AM</span>
     </label>
 
-    <label class="timing-option">
+    <label class="checkbox-option">
       <input type="checkbox" name="preferredTimingPeriod" value="PM" />
       <span>PM</span>
     </label>
   </div>
 
+  <label for="specificTiming" class="sub-label">Specific Timing Preference <span>(Optional)</span></label>
   <input
     type="text"
     id="specificTiming"
-    class="timing-input"
-    placeholder="Optional: e.g. Saturday 10am, weekdays after 7pm"
+    placeholder="e.g. Saturday 10am, weekdays after 7pm"
   />
 </div>
 

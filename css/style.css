@@ -186,20 +186,6 @@ textarea:focus {
   display: none;
 }
 
-@media (max-width: 720px) {
-  .hero-card,
-  .form-card {
-    padding: 28px;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-}
 .mini-flow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -229,7 +215,54 @@ textarea:focus {
   line-height: 1.45;
 }
 
+/* Clean checkbox layout for AM/PM timing */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 14px;
+}
+
+.checkbox-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  width: auto;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+}
+
+.checkbox-option input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  flex: 0 0 auto;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.checkbox-option span {
+  line-height: 1;
+  font-size: 15px;
+}
+
 @media (max-width: 720px) {
+  .hero-card,
+  .form-card {
+    padding: 28px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
   .mini-flow {
     grid-template-columns: 1fr;
   }
