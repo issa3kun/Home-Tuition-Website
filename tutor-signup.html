@@ -82,83 +82,87 @@
           </div>
 
           <div class="form-group">
-            <label for="subjects">Subjects Able to Teach</label>
-            <select id="subjects" multiple required class="multi-select">
-              <option disabled>Select one or more subjects</option>
+            <label>Subjects Able to Teach</label>
 
-              <optgroup label="Primary School">
-                <option>Primary English</option>
-                <option>Primary Mathematics</option>
-                <option>Primary Science</option>
-                <option>Primary Chinese</option>
-                <option>Primary Malay</option>
-                <option>Primary Tamil</option>
-                <option>Primary Higher Chinese</option>
-                <option>Primary Higher Malay</option>
-                <option>Primary Higher Tamil</option>
-              </optgroup>
+            <div class="tag-select-wrapper" data-input-id="subjects">
+              <div class="tag-select-display">
+                <div class="selected-tags"></div>
+                <button type="button" class="tag-select-toggle">⌄</button>
+              </div>
 
-              <optgroup label="Secondary School - Core Subjects">
-                <option>Secondary English</option>
-                <option>Secondary Mathematics</option>
-                <option>Secondary Additional Mathematics</option>
-                <option>Secondary Science</option>
-                <option>Secondary Chinese</option>
-                <option>Secondary Malay</option>
-                <option>Secondary Tamil</option>
-                <option>Secondary Higher Chinese</option>
-                <option>Secondary Higher Malay</option>
-                <option>Secondary Higher Tamil</option>
-                <option>Secondary Literature</option>
-                <option>Secondary History</option>
-                <option>Secondary Geography</option>
-                <option>Secondary Social Studies</option>
-              </optgroup>
+              <div class="tag-select-menu hidden">
+                <input type="text" class="tag-search" placeholder="Search subjects..." />
 
-              <optgroup label="Secondary School - Sciences">
-                <option>Secondary Biology</option>
-                <option>Secondary Chemistry</option>
-                <option>Secondary Physics</option>
-                <option>Secondary Combined Science (Bio/Chem)</option>
-                <option>Secondary Combined Science (Chem/Physics)</option>
-                <option>Secondary Combined Science (Physics/Bio)</option>
-              </optgroup>
+                <div class="tag-option-group">Primary School</div>
+                <button type="button" class="tag-option" data-value="Primary English">Primary English</button>
+                <button type="button" class="tag-option" data-value="Primary Mathematics">Primary Mathematics</button>
+                <button type="button" class="tag-option" data-value="Primary Science">Primary Science</button>
+                <button type="button" class="tag-option" data-value="Primary Chinese">Primary Chinese</button>
+                <button type="button" class="tag-option" data-value="Primary Malay">Primary Malay</button>
+                <button type="button" class="tag-option" data-value="Primary Tamil">Primary Tamil</button>
+                <button type="button" class="tag-option" data-value="Primary Higher Chinese">Primary Higher Chinese</button>
+                <button type="button" class="tag-option" data-value="Primary Higher Malay">Primary Higher Malay</button>
+                <button type="button" class="tag-option" data-value="Primary Higher Tamil">Primary Higher Tamil</button>
 
-              <optgroup label="Secondary School - Other Subjects">
-                <option>Principles of Accounts (POA)</option>
-                <option>Design and Technology (D&T)</option>
-                <option>Food and Consumer Education (FCE)</option>
-                <option>Art</option>
-                <option>Music</option>
-              </optgroup>
+                <div class="tag-option-group">Secondary School - Core Subjects</div>
+                <button type="button" class="tag-option" data-value="Secondary English">Secondary English</button>
+                <button type="button" class="tag-option" data-value="Secondary Mathematics">Secondary Mathematics</button>
+                <button type="button" class="tag-option" data-value="Secondary Additional Mathematics">Secondary Additional Mathematics</button>
+                <button type="button" class="tag-option" data-value="Secondary Science">Secondary Science</button>
+                <button type="button" class="tag-option" data-value="Secondary Chinese">Secondary Chinese</button>
+                <button type="button" class="tag-option" data-value="Secondary Malay">Secondary Malay</button>
+                <button type="button" class="tag-option" data-value="Secondary Tamil">Secondary Tamil</button>
+                <button type="button" class="tag-option" data-value="Secondary Higher Chinese">Secondary Higher Chinese</button>
+                <button type="button" class="tag-option" data-value="Secondary Higher Malay">Secondary Higher Malay</button>
+                <button type="button" class="tag-option" data-value="Secondary Higher Tamil">Secondary Higher Tamil</button>
+                <button type="button" class="tag-option" data-value="Secondary Literature">Secondary Literature</button>
+                <button type="button" class="tag-option" data-value="Secondary History">Secondary History</button>
+                <button type="button" class="tag-option" data-value="Secondary Geography">Secondary Geography</button>
+                <button type="button" class="tag-option" data-value="Secondary Social Studies">Secondary Social Studies</button>
 
-              <optgroup label="Junior College / A-Level">
-                <option>JC General Paper (GP)</option>
-                <option>JC Project Work</option>
-                <option>JC H1 Mathematics</option>
-                <option>JC H2 Mathematics</option>
-                <option>JC Further Mathematics</option>
-                <option>JC H1 Biology</option>
-                <option>JC H2 Biology</option>
-                <option>JC H1 Chemistry</option>
-                <option>JC H2 Chemistry</option>
-                <option>JC H1 Physics</option>
-                <option>JC H2 Physics</option>
-                <option>JC Economics</option>
-                <option>JC Literature</option>
-                <option>JC History</option>
-                <option>JC Geography</option>
-                <option>JC China Studies in English</option>
-                <option>JC Knowledge and Inquiry</option>
-              </optgroup>
+                <div class="tag-option-group">Secondary School - Sciences</div>
+                <button type="button" class="tag-option" data-value="Secondary Biology">Secondary Biology</button>
+                <button type="button" class="tag-option" data-value="Secondary Chemistry">Secondary Chemistry</button>
+                <button type="button" class="tag-option" data-value="Secondary Physics">Secondary Physics</button>
+                <button type="button" class="tag-option" data-value="Secondary Combined Science (Bio/Chem)">Secondary Combined Science (Bio/Chem)</button>
+                <button type="button" class="tag-option" data-value="Secondary Combined Science (Chem/Physics)">Secondary Combined Science (Chem/Physics)</button>
+                <button type="button" class="tag-option" data-value="Secondary Combined Science (Physics/Bio)">Secondary Combined Science (Physics/Bio)</button>
 
-              <optgroup label="Others">
-                <option>Phonics / Reading</option>
-                <option>Creative Writing</option>
-                <option>Study Skills / Exam Preparation</option>
-                <option>Others</option>
-              </optgroup>
-            </select>
+                <div class="tag-option-group">Secondary School - Other Subjects</div>
+                <button type="button" class="tag-option" data-value="Principles of Accounts (POA)">Principles of Accounts (POA)</button>
+                <button type="button" class="tag-option" data-value="Design and Technology (D&T)">Design and Technology (D&T)</button>
+                <button type="button" class="tag-option" data-value="Food and Consumer Education (FCE)">Food and Consumer Education (FCE)</button>
+                <button type="button" class="tag-option" data-value="Art">Art</button>
+                <button type="button" class="tag-option" data-value="Music">Music</button>
+
+                <div class="tag-option-group">Junior College / A-Level</div>
+                <button type="button" class="tag-option" data-value="JC General Paper (GP)">JC General Paper (GP)</button>
+                <button type="button" class="tag-option" data-value="JC Project Work">JC Project Work</button>
+                <button type="button" class="tag-option" data-value="JC H1 Mathematics">JC H1 Mathematics</button>
+                <button type="button" class="tag-option" data-value="JC H2 Mathematics">JC H2 Mathematics</button>
+                <button type="button" class="tag-option" data-value="JC Further Mathematics">JC Further Mathematics</button>
+                <button type="button" class="tag-option" data-value="JC H1 Biology">JC H1 Biology</button>
+                <button type="button" class="tag-option" data-value="JC H2 Biology">JC H2 Biology</button>
+                <button type="button" class="tag-option" data-value="JC H1 Chemistry">JC H1 Chemistry</button>
+                <button type="button" class="tag-option" data-value="JC H2 Chemistry">JC H2 Chemistry</button>
+                <button type="button" class="tag-option" data-value="JC H1 Physics">JC H1 Physics</button>
+                <button type="button" class="tag-option" data-value="JC H2 Physics">JC H2 Physics</button>
+                <button type="button" class="tag-option" data-value="JC Economics">JC Economics</button>
+                <button type="button" class="tag-option" data-value="JC Literature">JC Literature</button>
+                <button type="button" class="tag-option" data-value="JC History">JC History</button>
+                <button type="button" class="tag-option" data-value="JC Geography">JC Geography</button>
+                <button type="button" class="tag-option" data-value="JC China Studies in English">JC China Studies in English</button>
+                <button type="button" class="tag-option" data-value="JC Knowledge and Inquiry">JC Knowledge and Inquiry</button>
+
+                <div class="tag-option-group">Others</div>
+                <button type="button" class="tag-option" data-value="Phonics / Reading">Phonics / Reading</button>
+                <button type="button" class="tag-option" data-value="Creative Writing">Creative Writing</button>
+                <button type="button" class="tag-option" data-value="Study Skills / Exam Preparation">Study Skills / Exam Preparation</button>
+                <button type="button" class="tag-option" data-value="Others">Others</button>
+              </div>
+            </div>
+
+            <input type="hidden" id="subjects" required />
           </div>
 
           <div class="form-group">
