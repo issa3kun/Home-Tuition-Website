@@ -14,7 +14,7 @@ parentRequestForm.addEventListener("submit", function (event) {
     parentName: document.getElementById("parentName").value.trim(),
     whatsappNumber: document.getElementById("whatsappNumber").value.trim(),
     studentLevel: document.getElementById("studentLevel").value,
-    subjects: getSelectedOptions("subjects"),
+    subjects: document.getElementById("subjects").value,
     lessonMode: document.getElementById("lessonMode").value,
     area: document.getElementById("area").value.trim(),
     preferredGender: document.getElementById("preferredGender").value,
@@ -27,6 +27,11 @@ parentRequestForm.addEventListener("submit", function (event) {
     createdAt: new Date().toISOString()
   };
 
+  if (!parentRequest.subjects) {
+    alert("Please select at least one subject.");
+    return;
+  }
+
   StorageManager.add("parentRequests", parentRequest);
 
   const telegramMessage = generateTelegramMessage(parentRequest);
@@ -38,6 +43,8 @@ parentRequestForm.addEventListener("submit", function (event) {
 
   confirmationBox.classList.remove("hidden");
   parentRequestForm.reset();
+
+  clearAllTagSelects();
 
   confirmationBox.scrollIntoView({ behavior: "smooth" });
 });
@@ -85,13 +92,6 @@ ${request.remarks || "No additional remarks."}
 Note: Selection is not guaranteed and depends on the parent's final decision.`;
 }
 
-function getSelectedOptions(selectId) {
-  const selectedOptions = document.getElementById(selectId).selectedOptions;
-
-  return Array.from(selectedOptions)
-    .map((option) => option.value)
-    .join(", ");
-}
 function initializeTagSelects() {
   const wrappers = document.querySelectorAll(".tag-select-wrapper");
 
@@ -124,6 +124,7 @@ function initializeTagSelects() {
 
         tag.querySelector("button").addEventListener("click", function (event) {
           event.stopPropagation();
+
           selectedValues = selectedValues.filter((item) => item !== value);
 
           options.forEach((option) => {
@@ -192,6 +193,20 @@ function initializeTagSelects() {
         menu.classList.add("hidden");
       }
     });
+  });
+}
+
+function clearAllTagSelects() {
+  document.querySelectorAll(".tag-select-wrapper").forEach((wrapper) => {
+    wrapper.querySelector(".selected-tags").innerHTML = "";
+    wrapper.querySelectorAll(".tag-option").forEach((option) => {
+      option.classList.remove("selected");
+      option.style.display = "block";
+    });
+  });
+
+  document.querySelectorAll('input[type="hidden"]').forEach((input) => {
+    input.value = "";
   });
 }
 
