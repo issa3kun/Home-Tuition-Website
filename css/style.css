@@ -296,7 +296,7 @@ textarea:focus {
 }
 
 .selected-tags:empty::before {
-  content: "Select one or more subjects";
+  content: attr(data-placeholder);
   color: #64748b;
   font-size: 15px;
   padding-left: 4px;
