@@ -14,7 +14,7 @@ parentRequestForm.addEventListener("submit", function (event) {
     parentName: document.getElementById("parentName").value.trim(),
     whatsappNumber: document.getElementById("whatsappNumber").value.trim(),
     studentLevel: document.getElementById("studentLevel").value,
-    subjects: document.getElementById("subjects").value,
+    subjects: getSelectedOptions("subjects"),
     lessonMode: document.getElementById("lessonMode").value,
     area: document.getElementById("area").value.trim(),
     preferredGender: document.getElementById("preferredGender").value,
@@ -83,4 +83,12 @@ Remarks:
 ${request.remarks || "No additional remarks."}
 
 Note: Selection is not guaranteed and depends on the parent's final decision.`;
+}
+
+function getSelectedOptions(selectId) {
+  const selectedOptions = document.getElementById(selectId).selectedOptions;
+
+  return Array.from(selectedOptions)
+    .map((option) => option.value)
+    .join(", ");
 }

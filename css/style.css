@@ -267,3 +267,12 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 }
+
+.multi-select {
+  min-height: 150px;
+  padding: 10px 14px;
+}
+
+.multi-select option {
+  padding: 8px;
+}
