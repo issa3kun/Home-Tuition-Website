@@ -396,3 +396,43 @@ textarea:focus {
   color: #1d4ed8;
   font-weight: 700;
 }
+
+.form-grid > .form-group {
+  min-width: 0;
+}
+
+.tag-select-wrapper {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.tag-select-display {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.tag-select-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: auto;
+  width: 100% !important;
+  min-width: 0;
+  max-width: 100%;
+  max-height: 220px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.tag-option {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.tag-search {
+  width: 100%;
+  box-sizing: border-box;
+}
