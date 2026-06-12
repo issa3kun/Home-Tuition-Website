@@ -3,29 +3,31 @@ const confirmationBox = document.getElementById("confirmationBox");
 const confirmationText = document.getElementById("confirmationText");
 const telegramMessageBox = document.getElementById("telegramMessage");
 const copyTelegramMessageBtn = document.getElementById("copyTelegramMessage");
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyk-4fevx7UET7cwq-bEWhCiFFRLZomPwt-7rmlqjCuJgEQLv0eMLWjR5HwJ2Kry7i52A/exec";
 
 parentRequestForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const jobId = generateJobId();
 
-  const parentRequest = {
-    jobId,
-    parentName: document.getElementById("parentName").value.trim(),
-    whatsappNumber: document.getElementById("whatsappNumber").value.trim(),
-    studentLevel: document.getElementById("studentLevel").value,
-    subjects: document.getElementById("subjects").value,
-    lessonMode: document.getElementById("lessonMode").value,
-    area: document.getElementById("area").value.trim(),
-    preferredGender: document.getElementById("preferredGender").value,
-    qualification: document.getElementById("qualification").value,
-    preferredTimingPeriod: getSelectedTimingPeriods(),
-    specificTiming: document.getElementById("specificTiming").value.trim(),
-    budget: document.getElementById("budget").value.trim(),
-    remarks: document.getElementById("remarks").value.trim(),
-    status: "REQUEST_RECEIVED",
-    createdAt: new Date().toISOString()
-  };
+const parentRequest = {
+  type: "parent",
+  jobId,
+  parentName: document.getElementById("parentName").value.trim(),
+  whatsappNumber: document.getElementById("whatsappNumber").value.trim(),
+  studentLevel: document.getElementById("studentLevel").value,
+  subjects: document.getElementById("subjects").value,
+  lessonMode: document.getElementById("lessonMode").value,
+  area: document.getElementById("area").value.trim(),
+  preferredGender: document.getElementById("preferredGender").value,
+  qualification: document.getElementById("qualification").value,
+  preferredTimingPeriod: getSelectedTimingPeriods(),
+  specificTiming: document.getElementById("specificTiming").value.trim(),
+  budget: document.getElementById("budget").value.trim(),
+  remarks: document.getElementById("remarks").value.trim(),
+  status: "REQUEST_RECEIVED",
+  createdAt: new Date().toISOString()
+};
 
   if (!parentRequest.subjects) {
     alert("Please select at least one subject.");
@@ -33,6 +35,7 @@ parentRequestForm.addEventListener("submit", function (event) {
   }
 
   StorageManager.add("parentRequests", parentRequest);
+  sendToGoogleSheet(parentRequest);
 
   const telegramMessage = generateTelegramMessage(parentRequest);
 
@@ -211,3 +214,14 @@ function clearAllTagSelects() {
 }
 
 initializeTagSelects();
+
+function sendToGoogleSheet(data) {
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify(data)
+  });
+}

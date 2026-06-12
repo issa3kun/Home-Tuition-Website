@@ -1,6 +1,7 @@
 const tutorSignupForm = document.getElementById("tutorSignupForm");
 const tutorConfirmationBox = document.getElementById("tutorConfirmationBox");
 const tutorConfirmationText = document.getElementById("tutorConfirmationText");
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyk-4fevx7UET7cwq-bEWhCiFFRLZomPwt-7rmlqjCuJgEQLv0eMLWjR5HwJ2Kry7i52A/exec";
 
 tutorSignupForm.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -8,6 +9,7 @@ tutorSignupForm.addEventListener("submit", function (event) {
   const tutorId = generateTutorId();
 
   const tutorProfile = {
+    type: "tutor",
     tutorId,
     fullName: document.getElementById("fullName").value.trim(),
     phoneNumber: document.getElementById("phoneNumber").value.trim(),
@@ -29,6 +31,8 @@ tutorSignupForm.addEventListener("submit", function (event) {
   };
 
   StorageManager.add("tutors", tutorProfile);
+
+  sendToGoogleSheet(tutorProfile);
 
   tutorConfirmationText.textContent =
     `Thank you, ${tutorProfile.fullName}. Your Tutor ID is ${tutorId}. Please keep this ID for future reference.`;
@@ -153,3 +157,14 @@ function initializeTagSelects() {
 }
 
 initializeTagSelects();
+
+function sendToGoogleSheet(data) {
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify(data)
+  });
+}
