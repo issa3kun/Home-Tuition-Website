@@ -167,4 +167,4 @@ function sendToGoogleSheet(data) {
     },
     body: JSON.stringify(data)
   });
-}
+} 
