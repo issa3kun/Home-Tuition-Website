@@ -31,7 +31,7 @@ tutorSignupForm.addEventListener("submit", function (event) {
   };
 
   StorageManager.add("tutors", tutorProfile);
-
+  
   sendToGoogleSheet(tutorProfile);
 
   tutorConfirmationText.textContent =
