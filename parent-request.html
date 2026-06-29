@@ -146,8 +146,15 @@
           </div>
 
           <div class="form-group">
-            <label for="area">Preferred Area / Location</label>
-            <input type="text" id="area" required placeholder="e.g. Tampines" />
+            <label for="area">Exact Address / Postal Code</label>
+            <input 
+             type="text" 
+             id="area" 
+             name="area" 
+             placeholder="e.g. 123456 or 21 Tampines Street 92" 
+             autocomplete="street-address"
+             required
+             >
           </div>
 
           <div class="form-group">
