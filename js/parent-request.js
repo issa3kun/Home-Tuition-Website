@@ -1,8 +1,6 @@
 const parentRequestForm = document.getElementById("parentRequestForm");
 const confirmationBox = document.getElementById("confirmationBox");
-const confirmationText = document.getElementById("confirmationText");
-const telegramMessageBox = document.getElementById("telegramMessage");
-const copyTelegramMessageBtn = document.getElementById("copyTelegramMessage");
+
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyk-4fevx7UET7cwq-bEWhCiFFRLZomPwt-7rmlqjCuJgEQLv0eMLWjR5HwJ2Kry7i52A/exec";
 
 parentRequestForm.addEventListener("submit", function (event) {
@@ -10,24 +8,24 @@ parentRequestForm.addEventListener("submit", function (event) {
 
   const jobId = generateJobId();
 
-const parentRequest = {
-  type: "parent",
-  jobId,
-  parentName: document.getElementById("parentName").value.trim(),
-  whatsappNumber: document.getElementById("whatsappNumber").value.trim(),
-  studentLevel: document.getElementById("studentLevel").value,
-  subjects: document.getElementById("subjects").value,
-  lessonMode: document.getElementById("lessonMode").value,
-  area: document.getElementById("area").value.trim(),
-  preferredGender: document.getElementById("preferredGender").value,
-  qualification: document.getElementById("qualification").value,
-  preferredTimingPeriod: getSelectedTimingPeriods(),
-  specificTiming: document.getElementById("specificTiming").value.trim(),
-  budget: document.getElementById("budget").value.trim(),
-  remarks: document.getElementById("remarks").value.trim(),
-  status: "REQUEST_RECEIVED",
-  createdAt: new Date().toISOString()
-};
+  const parentRequest = {
+    type: "parent",
+    jobId,
+    parentName: document.getElementById("parentName").value.trim(),
+    whatsappNumber: document.getElementById("whatsappNumber").value.trim(),
+    studentLevel: document.getElementById("studentLevel").value,
+    subjects: document.getElementById("subjects").value,
+    lessonMode: document.getElementById("lessonMode").value,
+    area: document.getElementById("area").value.trim(),
+    preferredGender: document.getElementById("preferredGender").value,
+    qualification: document.getElementById("qualification").value,
+    preferredTimingPeriod: getSelectedTimingPeriods(),
+    specificTiming: document.getElementById("specificTiming").value.trim(),
+    budget: formatBudget(document.getElementById("budget").value.trim()),
+    remarks: document.getElementById("remarks").value.trim(),
+    status: "REQUEST_RECEIVED",
+    createdAt: new Date().toISOString()
+  };
 
   if (!parentRequest.subjects) {
     alert("Please select at least one subject.");
@@ -37,32 +35,17 @@ const parentRequest = {
   StorageManager.add("parentRequests", parentRequest);
   sendToGoogleSheet(parentRequest);
 
-  const telegramMessage = generateTelegramMessage(parentRequest);
-
-  confirmationText.textContent =
-    `Thank you, ${parentRequest.parentName}. Your request has been saved with Job ID: ${jobId}.`;
-
-  telegramMessageBox.value = telegramMessage;
+  confirmationBox.innerHTML = `
+    <h2>Request Successfully Submitted</h2>
+    <p>Thank you. Your tutor request has been submitted successfully.</p>
+  `;
 
   confirmationBox.classList.remove("hidden");
-  parentRequestForm.reset();
 
+  parentRequestForm.reset();
   clearAllTagSelects();
 
   confirmationBox.scrollIntoView({ behavior: "smooth" });
-});
-
-copyTelegramMessageBtn.addEventListener("click", function () {
-  navigator.clipboard.writeText(telegramMessageBox.value)
-    .then(() => {
-      copyTelegramMessageBtn.textContent = "Copied!";
-      setTimeout(() => {
-        copyTelegramMessageBtn.textContent = "Copy Telegram Message";
-      }, 1500);
-    })
-    .catch(() => {
-      alert("Unable to copy message. Please copy it manually.");
-    });
 });
 
 function getSelectedTimingPeriods() {
@@ -75,24 +58,20 @@ function getSelectedTimingPeriods() {
     .join(", ");
 }
 
-function generateTelegramMessage(request) {
-  return `📚 New Tuition Assignment
+function formatBudget(budget) {
+  if (!budget) {
+    return "";
+  }
 
-Job ID: ${request.jobId}
+  let cleanedBudget = budget.toString().trim();
 
-Subject: ${request.subjects}
-Student Level: ${request.studentLevel}
-Lesson Mode: ${request.lessonMode}
-Area: ${request.area}
-Preferred Tutor Gender: ${request.preferredGender}
-Preferred Qualification: ${request.qualification}
-Preferred Timing: ${request.preferredTimingPeriod || "Not specified"} (${request.specificTiming || "No specific time mentioned"})
-Budget: ${request.budget || "Not specified"}
+  cleanedBudget = cleanedBudget.replaceAll("$", "");
+  cleanedBudget = cleanedBudget.replace(/\/hr/gi, "");
+  cleanedBudget = cleanedBudget.replace(/\/hour/gi, "");
+  cleanedBudget = cleanedBudget.replace(/per hour/gi, "");
+  cleanedBudget = cleanedBudget.trim();
 
-Remarks:
-${request.remarks || "No additional remarks."}
-
-Note: Selection is not guaranteed and depends on the parent's final decision.`;
+  return "$" + cleanedBudget + "/Hr";
 }
 
 function initializeTagSelects() {
@@ -152,6 +131,20 @@ function initializeTagSelects() {
       });
     }
 
+    wrapper.clearTagSelect = function () {
+      selectedValues = [];
+
+      options.forEach((option) => {
+        option.classList.remove("selected");
+        option.style.display = "block";
+      });
+
+      searchInput.value = "";
+      renderTags();
+      updateHiddenInput();
+      menu.classList.add("hidden");
+    };
+
     display.addEventListener("click", function () {
       closeOtherMenus();
       menu.classList.toggle("hidden");
@@ -201,19 +194,11 @@ function initializeTagSelects() {
 
 function clearAllTagSelects() {
   document.querySelectorAll(".tag-select-wrapper").forEach((wrapper) => {
-    wrapper.querySelector(".selected-tags").innerHTML = "";
-    wrapper.querySelectorAll(".tag-option").forEach((option) => {
-      option.classList.remove("selected");
-      option.style.display = "block";
-    });
-  });
-
-  document.querySelectorAll('input[type="hidden"]').forEach((input) => {
-    input.value = "";
+    if (typeof wrapper.clearTagSelect === "function") {
+      wrapper.clearTagSelect();
+    }
   });
 }
-
-initializeTagSelects();
 
 function sendToGoogleSheet(data) {
   fetch(GOOGLE_SCRIPT_URL, {
@@ -225,3 +210,5 @@ function sendToGoogleSheet(data) {
     body: JSON.stringify(data)
   });
 }
+
+initializeTagSelects();
