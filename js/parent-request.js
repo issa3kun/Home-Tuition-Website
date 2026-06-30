@@ -2,8 +2,9 @@ const parentRequestForm = document.getElementById("parentRequestForm");
 const confirmationBox = document.getElementById("confirmationBox");
 
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyk-4fevx7UET7cwq-bEWhCiFFRLZomPwt-7rmlqjCuJgEQLv0eMLWjR5HwJ2Kry7i52A/exec";
+const WHATSAPP_NUMBER = "6588010944";
 
-parentRequestForm.addEventListener("submit", function (event) {
+parentRequestForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
   const jobId = generateJobId();
@@ -23,7 +24,7 @@ parentRequestForm.addEventListener("submit", function (event) {
     specificTiming: document.getElementById("specificTiming").value.trim(),
     budget: formatBudget(document.getElementById("budget").value.trim()),
     remarks: document.getElementById("remarks").value.trim(),
-    status: "REQUEST_RECEIVED",
+    status: "PENDING_PARENT_CONFIRMATION",
     createdAt: new Date().toISOString()
   };
 
@@ -33,11 +34,18 @@ parentRequestForm.addEventListener("submit", function (event) {
   }
 
   StorageManager.add("parentRequests", parentRequest);
-  sendToGoogleSheet(parentRequest);
+  await sendToGoogleSheet(parentRequest);
+
+  const whatsappLink = buildWhatsAppLink(parentRequest);
 
   confirmationBox.innerHTML = `
     <h2>Request Successfully Submitted</h2>
-    <p>Thank you. Your tutor request has been submitted successfully.</p>
+    <p>Your request has been saved. Redirecting you to WhatsApp for confirmation...</p>
+    <p>
+      <a href="${whatsappLink}" target="_blank" rel="noopener">
+        Click here if WhatsApp does not open automatically.
+      </a>
+    </p>
   `;
 
   confirmationBox.classList.remove("hidden");
@@ -46,6 +54,10 @@ parentRequestForm.addEventListener("submit", function (event) {
   clearAllTagSelects();
 
   confirmationBox.scrollIntoView({ behavior: "smooth" });
+
+  setTimeout(() => {
+    window.location.href = whatsappLink;
+  }, 1000);
 });
 
 function getSelectedTimingPeriods() {
@@ -72,6 +84,30 @@ function formatBudget(budget) {
   cleanedBudget = cleanedBudget.trim();
 
   return "$" + cleanedBudget + "/Hr";
+}
+
+function buildWhatsAppMessage(request) {
+  return `Hi, I would like to confirm my tuition request.
+
+Parent Name: ${request.parentName}
+Job ID: ${request.jobId}
+Student Level: ${request.studentLevel}
+Subject(s): ${request.subjects}
+Lesson Mode: ${request.lessonMode}
+Address / Postal Code: ${request.area}
+Preferred Tutor Gender: ${request.preferredGender}
+Preferred Qualification: ${request.qualification}
+Preferred Timing: ${request.preferredTimingPeriod || "Not specified"}
+Specific Timing: ${request.specificTiming || "Not specified"}
+Budget: ${request.budget || "Not specified"}
+
+Remarks:
+${request.remarks || "No additional remarks."}`;
+}
+
+function buildWhatsAppLink(request) {
+  const message = encodeURIComponent(buildWhatsAppMessage(request));
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 }
 
 function initializeTagSelects() {
@@ -201,7 +237,7 @@ function clearAllTagSelects() {
 }
 
 function sendToGoogleSheet(data) {
-  fetch(GOOGLE_SCRIPT_URL, {
+  return fetch(GOOGLE_SCRIPT_URL, {
     method: "POST",
     mode: "no-cors",
     headers: {
