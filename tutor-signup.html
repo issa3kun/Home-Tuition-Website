@@ -3,283 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StudyMatch | Tutor Sign-Up</title>
+  <title>StudyMatch | Tutor Assignments</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <main class="page-wrapper">
-    <section class="form-card">
+    <section class="hero-card">
       <a href="./index.html" class="back-link">← Back to Home</a>
 
-      <p class="eyebrow">StudyMatch Tutor Registration</p>
-      <h1>Register as a tutor.</h1>
+      <p class="eyebrow">StudyMatch Tutor Assignments</p>
+
+      <h1>Continue to Telegram Bot</h1>
 
       <p class="hero-text">
-        Fill in your details below. Once registered, you can be considered for suitable
-        tuition opportunities shared through our Telegram channel.
+        Tutor registration and assignment updates are handled through our Telegram bot.
+        Click the button below to continue.
       </p>
 
-      <form id="tutorSignupForm">
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" required placeholder="e.g. Tan Wei Ming" />
-          </div>
-
-          <div class="form-group">
-            <label for="phoneNumber">Phone Number</label>
-            <input type="tel" id="phoneNumber" required placeholder="e.g. 91234567" />
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" required placeholder="e.g. tutor@email.com" />
-          </div>
-
-          <div class="form-group">
-            <label for="telegramUsername">Telegram Username</label>
-            <input type="text" id="telegramUsername" placeholder="e.g. @studyTutor" />
-          </div>
-
-          <div class="form-group">
-            <label for="gender">Gender</label>
-            <select id="gender" required>
-              <option value="">Select gender</option>
-              <option>Male</option>
-              <option>Female</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="age">Age</label>
-            <input type="number" id="age" required min="16" placeholder="e.g. 21" />
-          </div>
-
-          <div class="form-group">
-            <label for="qualification">Highest Qualification</label>
-            <select id="qualification" required>
-              <option value="">Select qualification</option>
-              <option>O-Level</option>
-              <option>A-Level</option>
-              <option>Diploma</option>
-              <option>Undergraduate</option>
-              <option>Degree Holder</option>
-              <option>MOE / NIE-trained</option>
-              <option>Postgraduate</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="experience">Teaching Experience</label>
-            <select id="experience" required>
-              <option value="">Select experience</option>
-              <option>No formal experience yet</option>
-              <option>Less than 1 year</option>
-              <option>1 - 2 years</option>
-              <option>3 - 5 years</option>
-              <option>More than 5 years</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Subjects Able to Teach</label>
-
-            <div class="tag-select-wrapper" data-input-id="subjects">
-              <div class="tag-select-display">
-                <div class="selected-tags" data-placeholder="Select one or more subjects"></div>
-                <button type="button" class="tag-select-toggle">⌄</button>
-              </div>
-
-              <div class="tag-select-menu hidden">
-                <input type="text" class="tag-search" placeholder="Search subjects..." />
-
-                <div class="tag-option-group">Primary School</div>
-                <button type="button" class="tag-option" data-value="Primary English">Primary English</button>
-                <button type="button" class="tag-option" data-value="Primary Mathematics">Primary Mathematics</button>
-                <button type="button" class="tag-option" data-value="Primary Science">Primary Science</button>
-                <button type="button" class="tag-option" data-value="Primary Chinese">Primary Chinese</button>
-                <button type="button" class="tag-option" data-value="Primary Malay">Primary Malay</button>
-                <button type="button" class="tag-option" data-value="Primary Tamil">Primary Tamil</button>
-                <button type="button" class="tag-option" data-value="Primary Higher Chinese">Primary Higher Chinese</button>
-                <button type="button" class="tag-option" data-value="Primary Higher Malay">Primary Higher Malay</button>
-                <button type="button" class="tag-option" data-value="Primary Higher Tamil">Primary Higher Tamil</button>
-
-                <div class="tag-option-group">Secondary School - Core Subjects</div>
-                <button type="button" class="tag-option" data-value="Secondary English">Secondary English</button>
-                <button type="button" class="tag-option" data-value="Secondary Mathematics">Secondary Mathematics</button>
-                <button type="button" class="tag-option" data-value="Secondary Additional Mathematics">Secondary Additional Mathematics</button>
-                <button type="button" class="tag-option" data-value="Secondary Science">Secondary Science</button>
-                <button type="button" class="tag-option" data-value="Secondary Chinese">Secondary Chinese</button>
-                <button type="button" class="tag-option" data-value="Secondary Malay">Secondary Malay</button>
-                <button type="button" class="tag-option" data-value="Secondary Tamil">Secondary Tamil</button>
-                <button type="button" class="tag-option" data-value="Secondary Higher Chinese">Secondary Higher Chinese</button>
-                <button type="button" class="tag-option" data-value="Secondary Higher Malay">Secondary Higher Malay</button>
-                <button type="button" class="tag-option" data-value="Secondary Higher Tamil">Secondary Higher Tamil</button>
-                <button type="button" class="tag-option" data-value="Secondary Literature">Secondary Literature</button>
-                <button type="button" class="tag-option" data-value="Secondary History">Secondary History</button>
-                <button type="button" class="tag-option" data-value="Secondary Geography">Secondary Geography</button>
-                <button type="button" class="tag-option" data-value="Secondary Social Studies">Secondary Social Studies</button>
-
-                <div class="tag-option-group">Secondary School - Sciences</div>
-                <button type="button" class="tag-option" data-value="Secondary Biology">Secondary Biology</button>
-                <button type="button" class="tag-option" data-value="Secondary Chemistry">Secondary Chemistry</button>
-                <button type="button" class="tag-option" data-value="Secondary Physics">Secondary Physics</button>
-                <button type="button" class="tag-option" data-value="Secondary Combined Science (Bio/Chem)">Secondary Combined Science (Bio/Chem)</button>
-                <button type="button" class="tag-option" data-value="Secondary Combined Science (Chem/Physics)">Secondary Combined Science (Chem/Physics)</button>
-                <button type="button" class="tag-option" data-value="Secondary Combined Science (Physics/Bio)">Secondary Combined Science (Physics/Bio)</button>
-
-                <div class="tag-option-group">Secondary School - Other Subjects</div>
-                <button type="button" class="tag-option" data-value="Principles of Accounts (POA)">Principles of Accounts (POA)</button>
-                <button type="button" class="tag-option" data-value="Design and Technology (D&T)">Design and Technology (D&T)</button>
-                <button type="button" class="tag-option" data-value="Food and Consumer Education (FCE)">Food and Consumer Education (FCE)</button>
-                <button type="button" class="tag-option" data-value="Art">Art</button>
-                <button type="button" class="tag-option" data-value="Music">Music</button>
-
-                <div class="tag-option-group">Junior College / A-Level</div>
-                <button type="button" class="tag-option" data-value="JC General Paper (GP)">JC General Paper (GP)</button>
-                <button type="button" class="tag-option" data-value="JC Project Work">JC Project Work</button>
-                <button type="button" class="tag-option" data-value="JC H1 Mathematics">JC H1 Mathematics</button>
-                <button type="button" class="tag-option" data-value="JC H2 Mathematics">JC H2 Mathematics</button>
-                <button type="button" class="tag-option" data-value="JC Further Mathematics">JC Further Mathematics</button>
-                <button type="button" class="tag-option" data-value="JC H1 Biology">JC H1 Biology</button>
-                <button type="button" class="tag-option" data-value="JC H2 Biology">JC H2 Biology</button>
-                <button type="button" class="tag-option" data-value="JC H1 Chemistry">JC H1 Chemistry</button>
-                <button type="button" class="tag-option" data-value="JC H2 Chemistry">JC H2 Chemistry</button>
-                <button type="button" class="tag-option" data-value="JC H1 Physics">JC H1 Physics</button>
-                <button type="button" class="tag-option" data-value="JC H2 Physics">JC H2 Physics</button>
-                <button type="button" class="tag-option" data-value="JC Economics">JC Economics</button>
-                <button type="button" class="tag-option" data-value="JC Literature">JC Literature</button>
-                <button type="button" class="tag-option" data-value="JC History">JC History</button>
-                <button type="button" class="tag-option" data-value="JC Geography">JC Geography</button>
-                <button type="button" class="tag-option" data-value="JC China Studies in English">JC China Studies in English</button>
-                <button type="button" class="tag-option" data-value="JC Knowledge and Inquiry">JC Knowledge and Inquiry</button>
-
-                <div class="tag-option-group">Others</div>
-                <button type="button" class="tag-option" data-value="Phonics / Reading">Phonics / Reading</button>
-                <button type="button" class="tag-option" data-value="Creative Writing">Creative Writing</button>
-                <button type="button" class="tag-option" data-value="Study Skills / Exam Preparation">Study Skills / Exam Preparation</button>
-                <button type="button" class="tag-option" data-value="Others">Others</button>
-              </div>
-            </div>
-
-            <input type="hidden" id="subjects" required />
-          </div>
-
-          <div class="form-group">
-  <label>Levels Able to Teach</label>
-
-  <div class="tag-select-wrapper" data-input-id="levels">
-    <div class="tag-select-display">
-      <div class="selected-tags" data-placeholder="Select one or more levels"></div>
-      <button type="button" class="tag-select-toggle">⌄</button>
-    </div>
-
-    <div class="tag-select-menu hidden">
-      <input type="text" class="tag-search" placeholder="Search levels..." />
-
-      <div class="tag-option-group">Primary School</div>
-      <button type="button" class="tag-option" data-value="Primary 1">Primary 1</button>
-      <button type="button" class="tag-option" data-value="Primary 2">Primary 2</button>
-      <button type="button" class="tag-option" data-value="Primary 3">Primary 3</button>
-      <button type="button" class="tag-option" data-value="Primary 4">Primary 4</button>
-      <button type="button" class="tag-option" data-value="Primary 5">Primary 5</button>
-      <button type="button" class="tag-option" data-value="Primary 6">Primary 6</button>
-      <button type="button" class="tag-option" data-value="Primary 1 - 3">Primary 1 - 3</button>
-      <button type="button" class="tag-option" data-value="Primary 4 - 6">Primary 4 - 6</button>
-      <button type="button" class="tag-option" data-value="Primary 1 - 6">Primary 1 - 6</button>
-
-      <div class="tag-option-group">Secondary School</div>
-      <button type="button" class="tag-option" data-value="Secondary 1">Secondary 1</button>
-      <button type="button" class="tag-option" data-value="Secondary 2">Secondary 2</button>
-      <button type="button" class="tag-option" data-value="Secondary 3">Secondary 3</button>
-      <button type="button" class="tag-option" data-value="Secondary 4">Secondary 4</button>
-      <button type="button" class="tag-option" data-value="Secondary 5">Secondary 5</button>
-      <button type="button" class="tag-option" data-value="Secondary 1 - 2">Secondary 1 - 2</button>
-      <button type="button" class="tag-option" data-value="Secondary 3 - 5">Secondary 3 - 5</button>
-      <button type="button" class="tag-option" data-value="Secondary 1 - 5">Secondary 1 - 5</button>
-
-      <div class="tag-option-group">Junior College</div>
-      <button type="button" class="tag-option" data-value="JC 1">JC 1</button>
-      <button type="button" class="tag-option" data-value="JC 2">JC 2</button>
-      <button type="button" class="tag-option" data-value="JC 1 - 2">JC 1 - 2</button>
-
-      <div class="tag-option-group">Others</div>
-      <button type="button" class="tag-option" data-value="Preschool / Kindergarten">Preschool / Kindergarten</button>
-      <button type="button" class="tag-option" data-value="IB Programme">IB Programme</button>
-      <button type="button" class="tag-option" data-value="ITE">ITE</button>
-      <button type="button" class="tag-option" data-value="Polytechnic">Polytechnic</button>
-      <button type="button" class="tag-option" data-value="Adult Learning">Adult Learning</button>
-      <button type="button" class="tag-option" data-value="Others">Others</button>
-    </div>
-  </div>
-
-  <input type="hidden" id="levels" required />
-</div>
-
-          <div class="form-group">
-            <label for="preferredAreas">Preferred Areas</label>
-            <input type="text" id="preferredAreas" placeholder="e.g. Tampines, Bedok, Online" />
-          </div>
-
-          <div class="form-group">
-            <label>Availability</label>
-
-            <div class="checkbox-group">
-              <label class="checkbox-option">
-                <input type="checkbox" name="availabilityPeriod" value="AM" />
-                <span>AM</span>
-              </label>
-
-              <label class="checkbox-option">
-                <input type="checkbox" name="availabilityPeriod" value="PM" />
-                <span>PM</span>
-              </label>
-            </div>
-
-            <label for="specificAvailability" class="sub-label">
-              Specific Availability <span>(Optional)</span>
-            </label>
-
-            <input
-              type="text"
-              id="specificAvailability"
-              placeholder="e.g. Saturday 10am, weekdays after 7pm"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="expectedRate">Expected Rate per Hour</label>
-            <input type="text" id="expectedRate" placeholder="e.g. $35/hr" />
-          </div>
-        </div>
-
-        <div class="form-group full-width">
-          <label for="shortBio">Short Tutor Bio</label>
-          <textarea id="shortBio" rows="4" placeholder="Briefly describe your teaching style or experience."></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary full-button">
-          Submit Tutor Registration
-        </button>
-      </form>
-
-      <div id="tutorConfirmationBox" class="confirmation-box hidden">
-        <h2>Registration Submitted Successfully</h2>
-        <p id="tutorConfirmationText"></p>
-
-        <h3>Next Step</h3>
-        <p>
-          Please join the Telegram channel to receive potential tuition opportunities.
-        </p>
-
-        <a href="#" class="btn btn-secondary full-button">
-          Telegram Channel Link Coming Soon
+      <div class="button-group">
+        <a 
+          href="https://t.me/htlctestbot" 
+          class="btn btn-primary"
+          target="_blank"
+          rel="noopener"
+        >
+          Open Telegram Bot
         </a>
       </div>
+
+      <p class="hero-text">
+        If Telegram does not open automatically, please click the button above.
+      </p>
     </section>
   </main>
 
-  <script src="js/storage.js"></script>
-  <script src="js/tutor-signup.js"></script>
+  <script>
+    setTimeout(function () {
+      window.location.href = "https://t.me/htlctestbot";
+    }, 1000);
+  </script>
 </body>
 </html>
